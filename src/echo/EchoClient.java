@@ -14,10 +14,12 @@ import java.util.Scanner;
 
 public class EchoClient {
 	private static final String SERVER_IP = "218.39.221.68";
-	private static final int SERVER_PORT = 6002;
-
+	private static final int SERVER_PORT = 6001;
+	//ip와 port는 여기서 관리 밑에서는 바꿀수없다.
 	public static void main(String[] args) {
 		Socket socket = null;
+		//Scanner scanner = new Scanner(System.in);
+		//소켓과 스캐너 둘다 try문밖에
 		Scanner scanner = null;
 		try {
 
@@ -29,6 +31,7 @@ public class EchoClient {
 
 			// 2.서버 연결
 			socket.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT));
+			//호스트와 포트에 연결
 			System.out.println("[client] connected");
 			
 			// 3. IOStream 받아오기

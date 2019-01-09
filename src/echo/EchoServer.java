@@ -18,7 +18,7 @@ public class EchoServer {
 
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
-		try {
+		try {//어떤 try를 잡은건지?
 
 			// 1. 서버소켓 생성
 			serverSocket = new ServerSocket();
@@ -33,6 +33,7 @@ public class EchoServer {
 
 			// 3. accept(클라이언트로부터 연결요청을 기다린다.)
 			Socket socket = serverSocket.accept();
+			//연결 후에 통신을 위한 객체들을 얻는다.
 			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 			System.out.println("connected by client[" + inetRemoteSocketAddress.getAddress().getHostAddress() + ":"
 					+ inetRemoteSocketAddress.getPort() + "]");
