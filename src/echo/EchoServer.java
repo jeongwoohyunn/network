@@ -46,15 +46,17 @@ public class EchoServer {
 
 				while (true) {
 					// 5. 데이터 읽기(수신)
-					String data = br.readLine();
-					if (data == null) {
-						System.out.println("closed by client");
-						break;
-					}
-					System.out.println("received:" + data);
-
+//					String data = br.readLine();
+//					if (data == null) {
+//						System.out.println("closed by client");
+//						break;
+//					}
+//					System.out.println("received:" + data);
+					Socket socket = serverSocket.accept();
+					Thread thread = new EchoServerReceiveThread(socket);
+					thread.start();
 					// 6. 데이터 쓰기(전송)
-					pw.println(data);
+					//pw.println(data);
 				} // 6번 데이터 쓰기
 
 				// os.write(data.getBytes("UTF-8"));

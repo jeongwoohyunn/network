@@ -30,7 +30,7 @@ public class EchoServerReceiveThread extends Thread {
 
 		while(true) {
 		// 3. accept(클라이언트로부터 연결요청을 기다린다.)
-		Socket socket = serverSocket.accept();
+		//Socket socket = serverSocket.accept();
 		Thread therad = new EchoServerReceiveThread();
 		thread.start();
 		}
