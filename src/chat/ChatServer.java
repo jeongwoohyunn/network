@@ -19,7 +19,11 @@ public class ChatServer {
 		
 		try {
 			serverSocket = new ServerSocket();
-
+			//1-1
+			//종료후 빨리 바인딩을 하기 위해서
+			
+			serverSocket.setReuseAddress(true);
+			
 			InetAddress inetAddress = InetAddress.getLocalHost();
 			String ipAddress = inetAddress.getHostAddress();
 

@@ -15,8 +15,7 @@ public class ChatClient {
 
 	private static final String SERVER_IP = "218.39.221.68";
 	private static final int PORT = 9991;
-	//private static final String SERVER_IP = "218.39.221.66";
-	//private static final int PORT = 5001;
+
 	public static void main(String[] args) {
 		Scanner scanner = null;
 		Socket socket = null;
@@ -26,7 +25,7 @@ public class ChatClient {
 			socket = new Socket();
 
 			socket.connect(new InetSocketAddress(SERVER_IP, PORT));
-
+			
 			//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 			PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"),true);
 

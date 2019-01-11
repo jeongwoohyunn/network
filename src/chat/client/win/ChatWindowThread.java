@@ -1,29 +1,28 @@
-package chat;
+package chat.client.win;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class ChatClientThread extends Thread {
-	public Socket socket;
-	public ChatClientThread(Socket socket) {//생성자
-		this.socket = socket;
+public class ChatWindowThread extends Thread {
+	public ChatWindow cw;
+
+	public ChatWindowThread(ChatWindow cw) {
+		this.cw = cw;
 	}
+
 	@Override
 	public void run() {
 		while(true) {
-			
 			InputStreamReader isr;
 			try {
-				isr = new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8);
+				isr = new InputStreamReader(cw.getInputStream(),StandardCharsets.UTF_8);
 				BufferedReader br = new BufferedReader(isr);
 				
 				while(true) {
 					String data = br.readLine();
-					System.out.println(">>"+data);
+					System.out.println(data);
 				}
 			} catch (IOException e) {
 				
@@ -32,4 +31,5 @@ public class ChatClientThread extends Thread {
 		}
 	}
 	
+
 }
