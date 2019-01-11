@@ -14,26 +14,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.net.Socket;
 
 public class ChatWindow {
-	
+
 	private Frame frame;
 	private Panel pannel;
 	private Button buttonSend;
 	private TextField textField;
 	private TextArea textArea;
+	private Writer writer;//
 
-	
-	
-	public ChatWindow(String name) {
+	public ChatWindow(String name,Writer writer) {
+		this.writer = writer;
 		frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
 	}
-
 
 	public void show() {
 		// Button
@@ -79,11 +80,20 @@ public class ChatWindow {
 		frame.pack();
 	}
 
-	private void sendMessage() {
+	public void sendMessage() {
 		String message = textField.getText();
+		PrintWriter pw = (PrintWriter) writer;//
+		
+		if("quit".equals(message)==true) {
+			pw.println("종료");
+			pw.flush();
+			System.exit(0);
+		} else {
+			pw.println(frame.getTitle() + " : "+message);
+		}
 		// message 명령 처리요청
 		// message : + message\r\n
-		textArea.append("둘리 : " + message);
+		textArea.append("둘리 : " + message);// name들고와서 써야되는데 일단 둘리
 		// 메시지를 보냄 - 치고나면 비워야됨
 		textArea.append("\n");
 
@@ -92,9 +102,7 @@ public class ChatWindow {
 		textField.requestFocus();
 	}
 
-
-	public InputStream getInputStream() {
-		// TODO Auto-generated method stub
+	public Writer getTextArea() {
 		return null;
 	}
 

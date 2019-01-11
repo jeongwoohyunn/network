@@ -26,7 +26,7 @@ public class ChatServer {
 			
 			InetAddress inetAddress = InetAddress.getLocalHost();
 			String ipAddress = inetAddress.getHostAddress();
-
+			
 			serverSocket.bind(new InetSocketAddress(ipAddress, PORT));
 			log("binding" + ipAddress + ":" + PORT);
 

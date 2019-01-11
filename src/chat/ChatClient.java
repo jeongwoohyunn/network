@@ -28,7 +28,7 @@ public class ChatClient {
 			
 			//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 			PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"),true);
-
+			//보충
 			System.err.print("닉네임>>");
 			String nickname = scanner.nextLine();
 			printWriter.println("join:"+nickname);

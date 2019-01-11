@@ -51,11 +51,14 @@ public class TCPServer {
 					// 배열을 0부터 카운트만큼 디코딩해라
 					System.out.println("[server] received" + data);
 					// 6번 데이터 쓰기
-					
+
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					os.write(data.getBytes("UTF-8"));
 				}
-				try {
-				Thread.sleep(1000);
 			} catch (SocketTimeoutException e) {
 				System.out.println("[server] time out");
 			} catch (IOException e) {
